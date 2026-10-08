@@ -1,8 +1,8 @@
 // 2026.09.22 
+console.log(' - fetchServiceDetailsSlice.js - ');
 
+const fetchServiceDetails = async () => {
 
-const fetchServiceDetails = async () => {  // console.log(' - fetchServiceDetailsSlice.js - ');
-  // Заремировал, т.к. ответа не увидел даже в Postman
   const response = await fetch(`http://localhost:7070/api/services:1`);
   if (!response.ok) {    // throw new Error('Failed to fetch Services');
     throw new Error(response.statusText);
@@ -10,13 +10,12 @@ const fetchServiceDetails = async () => {  // console.log(' - fetchServiceDetail
   return await response.json();
 };
 
-export default fetchServiceDetails;
+// export default fetchServiceDetails;
 
 
 export function* uploadServiceDetailsGenerator() {
   while (true) {
     try {
-      console.log(' - try uploadServiceDetailsGenerator - ');
       const data = yield (fetchServiceDetails());
       console.info(data);
     } catch (e) {
@@ -24,5 +23,4 @@ export function* uploadServiceDetailsGenerator() {
     }
   }
 }
-
-// export default uploadServiceDetailsGenerator;
+export default uploadServiceDetailsGenerator;

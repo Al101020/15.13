@@ -24,10 +24,10 @@ export function serviceDetailsUploadRequest(searchDetails) {
     return { type: SERVICE_DETAILS_UPLOAD_REQUEST, payload: { searchDetails } }
 }
 
-export function serviceDetailsUploadSuccess(items) {
+export function serviceDetailsUploadSuccess(itemDetails) {
     return { type: SERVICE_DETAILS_UPLOAD_SUCCESS, payload: { itemDetails } }
 }
 
-export function serviceDetailsUploadFailure(error) {
+export function serviceDetailsUploadFailure(errorDetails) {
     return { type: SERVICE_DETAILS_UPLOAD_FAILURE, payload: { errorDetails } }
 }

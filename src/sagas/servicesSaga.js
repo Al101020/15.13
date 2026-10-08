@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest, all } from "redux-saga/effects";
 
 import fetchServiceDetalist from '../api/fetchServiceDetails';
 import { serviceDetailsUploadFailure, serviceDetailsUploadSuccess } from "../actions/actionCreators";
@@ -20,14 +20,34 @@ function* fetchServicesGenerator() {
 
 function* fetchServiceDetalistGenerator() {
   try {
+    console.log('fetchServiceDetalistGenerator - try');
     const details = yield call(fetchServiceDetalist);
-    yield put(serviceDetailsUploadSuccess(details));
+    // yield put(serviceDetailsUploadSuccess(details));
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     yield put(serviceDetailsUploadFailure(message));
   }
 }
 
+// // - тоже косяк, при выборе услуги уходит в штопор
+// export default function* rootSaga() {
+//   yield all([
+//     takeLatest(SERVICES_UPLOAD_REQUEST, fetchServicesGenerator),
+//     takeLatest(SERVICE_DETAILS_UPLOAD_REQUEST, fetchServiceDetalistGenerator),
+//   ])
+// }
+
+
+
+// - постоянно висит загрузка
+// export default function* rootSaga() {
+//   yield [
+//     takeLatest(SERVICES_UPLOAD_REQUEST, fetchServicesGenerator),
+//     takeLatest(SERVICE_DETAILS_UPLOAD_REQUEST, fetchServiceDetalistGenerator),
+//   ]
+// }
+
+// было - 1 вариант - при нажатии на услугу белый экран
 export default function* rootSaga() {
   yield takeLatest(SERVICES_UPLOAD_REQUEST, fetchServicesGenerator);
   yield takeLatest(SERVICE_DETAILS_UPLOAD_REQUEST, fetchServiceDetalistGenerator);

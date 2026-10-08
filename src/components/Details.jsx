@@ -12,10 +12,10 @@ export default function Services() {
   // console.log(error);
   const {Details, isLoadingDetails, isErrorDetails, errorDetails} = useSelector((state) => state.details);
 
-  const sTaTe = useSelector((state) => state); // --- Для проверки
-  useEffect(() => {
-    console.log(sTaTe);
-  }, [sTaTe]); // При изменении state // --- Для проверки
+  // const sTaTe = useSelector((state) => state.details); // --- Для проверки
+  // useEffect(() => {
+  //   console.log(sTaTe);
+  // }, [sTaTe]); // При изменении state // --- Для проверки
 
   const dispatch = useDispatch();
 
@@ -37,11 +37,11 @@ export default function Services() {
     }
   }, [Details]); // При изменении services
 
-
-    function repeatDetailsRequest() {
-      // console.log('Кнопка: Повторить запрос');
-      dispatch(serviceDetailsUploadRequest());
-    }
+    // // Пока скроем
+    // function repeatDetailsRequest() {
+    //   // console.log('Кнопка: Повторить запрос');
+    //   dispatch(serviceDetailsUploadRequest());
+    // }
 
     // function serviceSelected(e) {      // console.log('выбран сервис');
     //   const service = e.target.parentElement.parentElement

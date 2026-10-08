@@ -1,8 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';// import { useEffect, useState } from 'react';
 
 // import fetchServiceDetails from '../api/fetchServiceDetails';
-import uploadServiceDetailsGenerator from '../api/fetchServiceDetails'
+import { uploadServiceDetailsGenerator } from '../api/fetchServiceDetails'
 
 import Details from '../components/Details'
 
